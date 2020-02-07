@@ -2,22 +2,30 @@
   <div class="alert alert-danger" *ngIf="error">
     {{error}}
   </div>
-  <mat-spinner style="margin-left: auto; margin-right: auto;" *ngIf="products.length === 0"></mat-spinner>
-
-  <mat-card *ngFor="let product of products" style="margin-top:10px;">
-    <mat-card-header>
-      <mat-card-title>{{product.name}}</mat-card-title>
-      <mat-card-subtitle>{{product.price}} $/ {{product.quantity}}
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        {{product.description}}
-      </p>
-      <img style="height:100%; width: 100%;" src="{{ product.imageUrl }}" />
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button> Buy product</button>
-    </mat-card-actions>
-  </mat-card>
+  <div *ngIf="!isShowSpinner">
+    <button type="button" class="btn-sm btn btn-secondary" style="margin-right: 5px"
+            (click)="changeView(CREATE_MODE)">
+      <i class="fas fa-plus"></i>
+    </button>
+    <button type="button" class="btn-sm btn btn-secondary" style="margin-right: 5px"
+            (click)="changeView(EDIT_MODE)">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button type="button" class="btn-sm btn btn-secondary" style="margin-right: 5px">
+      <i class="fas fa-trash-alt"></i>
+    </button>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn-sm btn btn-secondary active">
+        <input type="radio" name="options" value="grid" [(ngModel)]="displayMode" id="Grid" checked>
+        <i class="fas fa-th-large"></i>
+      </label>
+      <label class="btn-sm btn btn-secondary">
+        <input type="radio" value="list" [(ngModel)]="displayMode" name="options" id="list">
+        <i class="fas fas fa-list"></i>
+      </label>
+    </div>
+  </div>
+  <mat-spinner style="margin-left: auto; margin-right: auto;" *ngIf="isShowSpinner"></mat-spinner>
+  <app-view-home (alert)="getError($event)" (productList)="getProducts($event)" *ngIf="mode === VIEW_MODE"></app-view-home>
+  <app-action-home [actionMode]="mode"  (cancelAction)="setMode($event)" *ngIf="mode === EDIT_MODE || mode === CREATE_MODE"></app-action-home>
 </div>

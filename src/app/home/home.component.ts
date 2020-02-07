@@ -7,18 +7,27 @@ import {ApiService} from '../api.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  products = [];
+  VIEW_MODE = 'view-mode';
+  CREATE_MODE = 'create-mode';
+  EDIT_MODE = 'edit-mode';
+  mode = this.VIEW_MODE;
   error = '';
+  displayMode = {options : 'grid'};
+  isShowSpinner = true;
   constructor(private apiService: ApiService) { }
 
-  ngOnInit() {
-    this.apiService.sendGetRequest().subscribe((data: any[]) => {
-      console.log(data);
-      this.products =  data;
-    }, (error: string) => {
-      console.log(error);
-      this.error = error;
-    });
+  ngOnInit() {}
+  changeView(mode) {
+    this.mode = mode;
+  }
+  getError(error) {
+    this.error = error;
+  }
+  getProducts(productNumber) {
+    this.isShowSpinner = productNumber === 0;
+  }
+  setMode(mode) {
+    this.mode = mode;
   }
 
 }
