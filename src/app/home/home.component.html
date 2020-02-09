@@ -22,7 +22,7 @@
       </button>
     </div>
   </div>
-  <div class="alert" style="margin-top: 10px" [ngClass]="alertObject.type" *ngIf="alertObject">
+  <div class="alert" style="margin-top: 10px" [ngClass]="alertObject.type" *ngIf="alertObject.message">
     {{alertObject.message}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>

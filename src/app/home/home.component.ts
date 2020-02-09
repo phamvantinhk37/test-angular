@@ -11,7 +11,10 @@ export class HomeComponent implements OnInit {
   CREATE_MODE = 'create-mode';
   EDIT_MODE = 'edit-mode';
   mode = this.VIEW_MODE;
-  alertObject: object;
+  alertObject = {
+    type: '',
+    message: ''
+  };
   selectedList: Array<string>;
   isGridActive = true;
   isShowSpinner = true;

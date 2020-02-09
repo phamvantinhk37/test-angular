@@ -1,4 +1,4 @@
-<div class="alert" style="margin-top: 10px" [ngClass]="actionAlert.type" *ngIf="actionAlert">
+<div class="alert" style="margin-top: 10px" [ngClass]="actionAlert.type" *ngIf="actionAlert.message">
   {{actionAlert.message}}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>

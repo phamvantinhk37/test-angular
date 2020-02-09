@@ -13,7 +13,10 @@ export class ActionHomeComponent implements OnInit {
   VIEW_MODE = 'view-mode';
   CREATE_MODE = 'create-mode';
   EDIT_MODE = 'edit-mode';
-  actionAlert: object;
+  actionAlert = {
+    type: '',
+    message: ''
+  };
   productModel = {
     name: '',
     description: '',
