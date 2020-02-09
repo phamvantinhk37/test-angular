@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 import {ApiService} from '../../api.service';
 
 @Component({
@@ -7,10 +7,13 @@ import {ApiService} from '../../api.service';
   styleUrls: ['./view-home.component.css']
 })
 export class ViewHomeComponent implements OnInit {
-  @Output() alert = new EventEmitter<string>();
+  @Output() alertObject = new EventEmitter<object>();
   @Output() productList = new EventEmitter<number>();
-  isGridList = true;
+  @Output() selectedList = new EventEmitter<Array<string>>();
+  @Input() isGirdView: boolean;
   products = [];
+  selectedProduct = [];
+  isChecked = false;
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
@@ -20,8 +23,18 @@ export class ViewHomeComponent implements OnInit {
       this.productList.emit(this.products.length);
     }, (error: string) => {
       console.log(error);
-      this.alert.emit(error);
+      this.alertObject.emit({
+        type: 'alert-danger',
+        message: error
+      });
     });
+  }
+  changeCheckBox(event) {
+    if (event.checked) {
+      this.selectedProduct.push(event.source.id);
+      this.selectedList.emit(this.selectedProduct);
+    }
+    console.log(this.selectedProduct);
   }
 
 }

@@ -1,5 +1,6 @@
-<div *ngIf="isGridList">
+<div *ngIf="isGirdView">
   <mat-card *ngFor="let product of products" style="margin-top:10px;">
+    <mat-checkbox [id]="product.id" [checked]="isChecked" (change)="changeCheckBox($event)"></mat-checkbox>
     <mat-card-header>
       <mat-card-title>{{product.name}}</mat-card-title>
       <mat-card-subtitle>{{product.price}} $/ {{product.quantity}}
@@ -16,7 +17,7 @@
     </mat-card-actions>
   </mat-card>
 </div>
-<div *ngIf="!isGridList">
+<div *ngIf="!isGirdView">
   <mat-list>
     <mat-list-item *ngFor="let product of products">
       <div><img style="height:50px; width: 50px;" src="{{ product.imageUrl }}" /></div>

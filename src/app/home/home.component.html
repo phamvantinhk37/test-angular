@@ -1,7 +1,4 @@
 <div style="padding: 13px;">
-  <div class="alert alert-danger" *ngIf="error">
-    {{error}}
-  </div>
   <div *ngIf="!isShowSpinner">
     <button type="button" class="btn-sm btn btn-secondary" style="margin-right: 5px"
             (click)="changeView(CREATE_MODE)">
@@ -11,21 +8,27 @@
             (click)="changeView(EDIT_MODE)">
       <i class="fas fa-edit"></i>
     </button>
-    <button type="button" class="btn-sm btn btn-secondary" style="margin-right: 5px">
+    <button type="button" class="btn-sm btn btn-secondary" style="margin-right: 5px" (click)="deleteProduct()">
       <i class="fas fa-trash-alt"></i>
     </button>
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn-sm btn btn-secondary active">
-        <input type="radio" name="options" value="grid" [(ngModel)]="displayMode" id="Grid" checked>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-secondary btn-sm"
+              [ngClass]="{'active': isGridActive}" (click)="activeGridView()">
         <i class="fas fa-th-large"></i>
-      </label>
-      <label class="btn-sm btn btn-secondary">
-        <input type="radio" value="list" [(ngModel)]="displayMode" name="options" id="list">
+      </button>
+      <button type="button btn-sm" class="btn btn-secondary btn-sm"
+              [ngClass]="{'active': !isGridActive}" (click)="activeListView()">
         <i class="fas fas fa-list"></i>
-      </label>
+      </button>
     </div>
   </div>
+  <div class="alert" style="margin-top: 10px" [ngClass]="alertObject.type" *ngIf="alertObject">
+    {{alertObject.message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <mat-spinner style="margin-left: auto; margin-right: auto;" *ngIf="isShowSpinner"></mat-spinner>
-  <app-view-home (alert)="getError($event)" (productList)="getProducts($event)" *ngIf="mode === VIEW_MODE"></app-view-home>
-  <app-action-home [actionMode]="mode"  (cancelAction)="setMode($event)" *ngIf="mode === EDIT_MODE || mode === CREATE_MODE"></app-action-home>
+  <app-view-home (selectedList)="getSelectedList($event)" (alertObject)="getError($event)" [isGirdView]="isGridActive" (productList)="getProducts($event)" *ngIf="mode === VIEW_MODE"></app-view-home>
+  <app-action-home [actionMode]="mode" (alertObject)="getError($event)" (cancelAction)="setMode($event)" *ngIf="mode === EDIT_MODE || mode === CREATE_MODE"></app-action-home>
 </div>

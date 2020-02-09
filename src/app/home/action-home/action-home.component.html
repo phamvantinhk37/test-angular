@@ -1,19 +1,52 @@
-<mat-card style="margin-top:10px;">
-  <mat-card-header>
-    <mat-card-title></mat-card-title>
-  </mat-card-header>
-  <mat-card-content></mat-card-content>
-  <mat-card-actions style="text-align: right">
-    <button mat-button mat-flat-button type="button" color="primary" *ngIf="actionMode === CREATE_MODE"
-            (click)="createAction()">Create
-    </button>
-    <button mat-button mat-flat-button type="button" color="primary" *ngIf="actionMode === EDIT_MODE"
-            (click)="editAction()">Edit
-    </button>
-    <button mat-button mat-flat-button type="button"
-            (click)="cancelEvent()">Cancel
-    </button>
-  </mat-card-actions>
-</mat-card>
-
+<div class="alert" style="margin-top: 10px" [ngClass]="actionAlert.type" *ngIf="actionAlert">
+  {{actionAlert.message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form #productForm="ngForm">
+  <mat-card style="margin-top:10px;">
+    <mat-card-header>
+      <mat-card-title *ngIf="actionMode === CREATE_MODE">Create Product</mat-card-title>
+      <mat-card-title *ngIf="actionMode === EDIT_MODE">Edit Product</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-group">
+        <label>Product Title</label>
+        <input type="text" class="form-control" id="title" name="title"
+               [(ngModel)]="productModel.name">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="form-control" id="description" name="description"
+               [(ngModel)]="productModel.description">
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <input type="number" class="form-control" id="price" name="price"
+               [(ngModel)]="productModel.price">
+      </div>
+      <div class="form-group">
+        <label>Quantity</label>
+        <input type="number" class="form-control" id="quantity" name="quantity"
+               [(ngModel)]="productModel.quantity">
+      </div>
+      <div class="form-group">
+        <label>Image</label>
+        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="productModel.imageUrl">
+      </div>
+    </mat-card-content>
+    <mat-card-actions style="text-align: right">
+      <button mat-button mat-flat-button type="submit" color="primary" *ngIf="actionMode === CREATE_MODE"
+              (click)="createAction()">Create
+      </button>
+      <button mat-button mat-flat-button type="submit" color="primary" *ngIf="actionMode === EDIT_MODE"
+              (click)="editAction()">Edit
+      </button>
+      <button mat-button mat-flat-button type="button"
+              (click)="cancelEvent()">Cancel
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
 

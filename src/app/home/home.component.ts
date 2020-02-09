@@ -11,8 +11,9 @@ export class HomeComponent implements OnInit {
   CREATE_MODE = 'create-mode';
   EDIT_MODE = 'edit-mode';
   mode = this.VIEW_MODE;
-  error = '';
-  displayMode = {options : 'grid'};
+  alertObject: object;
+  selectedList: Array<string>;
+  isGridActive = true;
   isShowSpinner = true;
   constructor(private apiService: ApiService) { }
 
@@ -20,14 +21,42 @@ export class HomeComponent implements OnInit {
   changeView(mode) {
     this.mode = mode;
   }
-  getError(error) {
-    this.error = error;
+  getError(alertObject) {
+    this.alertObject = alertObject;
   }
   getProducts(productNumber) {
     this.isShowSpinner = productNumber === 0;
   }
   setMode(mode) {
     this.mode = mode;
+  }
+  activeGridView() {
+    this.isGridActive = true;
+  }
+  activeListView() {
+    this.isGridActive = false;
+  }
+  getSelectedList(selectedList) {
+    this.selectedList = selectedList;
+  }
+  deleteProduct() {
+    this.selectedList.forEach(id => {
+      console.log(id);
+      this.apiService.sendDeleteRequest(id).subscribe((successData: object) => {
+        console.log(successData);
+        this.alertObject = {
+          type: 'alert-success',
+          // @ts-ignore
+          message: `Product ${id} is deleted successful`
+        };
+      }, (error: string) => {
+        console.log(error);
+        this.alertObject = {
+          type: 'alert-danger',
+          message: error
+        };
+      });
+    });
   }
 
 }

@@ -23,4 +23,10 @@ export class ApiService {
   public sendGetRequest() {
     return this.httpClient.get(this.PRODUCT_API).pipe(catchError(this.handleError));
   }
+  public sendPostRequest(newProduct) {
+    return this.httpClient.post(this.PRODUCT_API, newProduct).pipe(catchError(this.handleError));
+  }
+  public sendDeleteRequest(id) {
+    return this.httpClient.delete(`http://localhost:3000/products/${id}`).pipe(catchError(this.handleError));
+  }
 }

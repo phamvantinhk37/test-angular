@@ -7,7 +7,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatIconModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatToolbarModule
+} from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ViewHomeComponent } from './home/view-home/view-home.component';
 import { ActionHomeComponent } from './home/action-home/action-home.component';
@@ -35,7 +43,8 @@ import {FormsModule} from '@angular/forms';
     MatCardModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
