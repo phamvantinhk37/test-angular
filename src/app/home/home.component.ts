@@ -60,13 +60,13 @@ export class HomeComponent implements OnInit {
       console.log(item);
       this.apiService.sendDeleteRequest(item.id).subscribe((successData: object) => {
         console.log(successData);
-        this.getList();
         let detail: any;
         if (this.selectedList.length === 1) {
           detail = item.name;
         } else {
           detail = this.selectedList.length;
         }
+        this.selectedList.length = 0;
         this.alertObject = {
           type: 'alert-success',
           // @ts-ignore
@@ -80,6 +80,7 @@ export class HomeComponent implements OnInit {
         };
       });
     });
+    this.getList();
   }
 
 }
