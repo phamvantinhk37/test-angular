@@ -1,14 +1,18 @@
 <div style="padding: 13px;">
-  <div *ngIf="!isShowSpinner">
+  <div *ngIf="!isShowSpinner && !(mode === CREATE_MODE || mode === EDIT_MODE)" class="text-right">
     <button type="button" class="btn-sm btn btn-secondary" style="margin-right: 5px"
             (click)="changeView(CREATE_MODE)">
       <i class="fas fa-plus"></i>
     </button>
     <button type="button" class="btn-sm btn btn-secondary" style="margin-right: 5px"
+            [disabled]="!selectedList || selectedList.length !== 1"
             (click)="changeView(EDIT_MODE)">
       <i class="fas fa-edit"></i>
     </button>
-    <button type="button" class="btn-sm btn btn-secondary" style="margin-right: 5px" (click)="deleteProduct()">
+    <button type="button" class="btn-sm btn btn-secondary"
+            [disabled]="!selectedList || selectedList.length === 0"
+            data-toggle="modal"
+            data-target="#exampleModal" style="margin-right: 5px">
       <i class="fas fa-trash-alt"></i>
     </button>
     <div class="btn-group" role="group">
@@ -29,6 +33,33 @@
     </button>
   </div>
   <mat-spinner style="margin-left: auto; margin-right: auto;" *ngIf="isShowSpinner"></mat-spinner>
-  <app-view-home (selectedList)="getSelectedList($event)" (alertObject)="getError($event)" [isGirdView]="isGridActive" (productList)="getProducts($event)" *ngIf="mode === VIEW_MODE"></app-view-home>
-  <app-action-home [actionMode]="mode" (alertObject)="getError($event)" (cancelAction)="setMode($event)" *ngIf="mode === EDIT_MODE || mode === CREATE_MODE"></app-action-home>
+  <app-view-home (selectedList)="getSelectedList($event)"
+                 (alertObject)="getError($event)"
+                 [isGirdView]="isGridActive"
+                 [data] = productsData
+                 (productList)="getProducts($event)"
+                 *ngIf="mode === VIEW_MODE"></app-view-home>
+  <app-action-home [actionMode]="mode"
+                   (alertObject)="getError($event)"
+                   (cancelAction)="setMode($event)"
+                   *ngIf="mode === EDIT_MODE || mode === CREATE_MODE"></app-action-home>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Dialog</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you Delete {{selectedList ? selectedList.length : 0}} product?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="deleteProduct()" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>

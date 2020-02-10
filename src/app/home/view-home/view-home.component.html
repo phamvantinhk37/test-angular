@@ -1,6 +1,6 @@
 <div *ngIf="isGirdView">
   <mat-card *ngFor="let product of products" style="margin-top:10px;">
-    <mat-checkbox [id]="product.id" [checked]="isChecked" (change)="changeCheckBox($event)"></mat-checkbox>
+    <mat-checkbox [id]="product.id" [name]="product.name" [checked]="isChecked" (change)="changeCheckBox($event)"></mat-checkbox>
     <mat-card-header>
       <mat-card-title>{{product.name}}</mat-card-title>
       <mat-card-subtitle>{{product.price}} $/ {{product.quantity}}
@@ -19,10 +19,13 @@
 </div>
 <div *ngIf="!isGirdView">
   <mat-list>
-    <mat-list-item *ngFor="let product of products">
-      <div><img style="height:50px; width: 50px;" src="{{ product.imageUrl }}" /></div>
-      <h4 mat-line>{{product.name}}</h4>
-      <p mat-line> {{product.price}} $/ {{product.quantity}} </p>
-    </mat-list-item>
+    <mat-selection-list>
+      <mat-list-item *ngFor="let product of products">
+        <mat-checkbox [id]="product.id" [name]="product.name" [checked]="isChecked" (change)="changeCheckBox($event)"></mat-checkbox>
+        <img mat-list-avatar style="height:50px; width: 50px;" src="{{ product.imageUrl }}" />
+        <h4 matLine>{{product.name}}</h4>
+        <p matLine class="demo-2"> {{product.price}} $/ {{product.quantity}} </p>
+      </mat-list-item>
+    </mat-selection-list>
   </mat-list>
 </div>

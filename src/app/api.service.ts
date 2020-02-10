@@ -7,6 +7,7 @@ import {catchError} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
+  // private PRODUCT_API = 'https://my-json-server.typicode.com/phamvantinhk37/serverside/products';
   private PRODUCT_API = 'http://localhost:3000/products';
   constructor(private httpClient: HttpClient) { }
   handleError(error: HttpErrorResponse) {
@@ -27,6 +28,6 @@ export class ApiService {
     return this.httpClient.post(this.PRODUCT_API, newProduct).pipe(catchError(this.handleError));
   }
   public sendDeleteRequest(id) {
-    return this.httpClient.delete(`http://localhost:3000/products/${id}`).pipe(catchError(this.handleError));
+    return this.httpClient.delete(`${this.PRODUCT_API}/${id}`).pipe(catchError(this.handleError));
   }
 }

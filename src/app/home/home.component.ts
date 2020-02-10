@@ -15,9 +15,10 @@ export class HomeComponent implements OnInit {
     type: '',
     message: ''
   };
-  selectedList: Array<string>;
+  selectedList: Array<{id: 0, name: 'test'}>;
   isGridActive = true;
   isShowSpinner = true;
+  productsData = [];
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {}
@@ -42,15 +43,34 @@ export class HomeComponent implements OnInit {
   getSelectedList(selectedList) {
     this.selectedList = selectedList;
   }
+  getList() {
+    this.apiService.sendGetRequest().subscribe((data: any[]) => {
+      console.log(data);
+      this.productsData =  data;
+    }, (error: string) => {
+      console.log(error);
+      this.alertObject = {
+        type: 'alert-danger',
+        message: error
+      };
+    });
+  }
   deleteProduct() {
-    this.selectedList.forEach(id => {
-      console.log(id);
-      this.apiService.sendDeleteRequest(id).subscribe((successData: object) => {
+    this.selectedList.forEach(item => {
+      console.log(item);
+      this.apiService.sendDeleteRequest(item.id).subscribe((successData: object) => {
         console.log(successData);
+        this.getList();
+        let detail: any;
+        if (this.selectedList.length === 1) {
+          detail = item.name;
+        } else {
+          detail = this.selectedList.length;
+        }
         this.alertObject = {
           type: 'alert-success',
           // @ts-ignore
-          message: `Product ${id} is deleted successful`
+          message: `Product ${detail} is deleted successful`
         };
       }, (error: string) => {
         console.log(error);
