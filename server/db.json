@@ -2,11 +2,11 @@
   "products": [
     {
       "id": 8,
-      "name": "Fantastic Concrete Car",
-      "description": "Iste consequuntur ab. Possimus et vitae ad alias. Est aliquam dolorem occaecati. Voluptatem voluptatem quis cumque sint reiciendis. Ducimus autem non voluptatem dignissimos magnam et nesciunt. Dolorem et vel soluta dolore iusto assumenda.",
-      "price": "696.00",
+      "name": "test edit",
+      "description": "test edit",
+      "price": 555,
       "imageUrl": "https://source.unsplash.com/1600x900/?product",
-      "quantity": 6095
+      "quantity": 555
     },
     {
       "id": 9,

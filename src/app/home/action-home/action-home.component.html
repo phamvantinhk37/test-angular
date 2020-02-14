@@ -14,34 +14,47 @@
       <div class="form-group">
         <label>Product Title</label>
         <input type="text" class="form-control" id="title" name="title"
-               [(ngModel)]="productModel.name">
+               [(ngModel)]="productModel.name" required #name=ngModel>
+        <div [hidden]="name.valid || name.pristine" class="text-danger">
+          Name is required
+        </div>
       </div>
       <div class="form-group">
         <label>Description</label>
-        <input type="text" class="form-control" id="description" name="description"
-               [(ngModel)]="productModel.description">
+        <textarea  type="text" class="form-control" id="description" name="description"
+                   row="3" [(ngModel)]="productModel.description"></textarea>
       </div>
       <div class="form-group">
         <label>Price</label>
         <input type="number" class="form-control" id="price" name="price"
-               [(ngModel)]="productModel.price">
+               [(ngModel)]="productModel.price" #price=ngModel required>
+        <div [hidden]="price.valid || price.pristine" class="text-danger">
+          Price is required
+        </div>
       </div>
       <div class="form-group">
         <label>Quantity</label>
         <input type="number" class="form-control" id="quantity" name="quantity"
-               [(ngModel)]="productModel.quantity">
+               [(ngModel)]="productModel.quantity" #quantity=ngModel required>
+        <div [hidden]="quantity.valid || quantity.pristine" class="text-danger">
+          Quantity is required
+        </div>
       </div>
       <div class="form-group">
         <label>Image</label>
-        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="productModel.imageUrl">
+        <input type="text" class="form-control" id="image" name="image"
+               [(ngModel)]="productModel.imageUrl" #image=ngModel required>
+        <div [hidden]="image.valid || image.pristine" class="text-danger">
+          Image is required
+        </div>
       </div>
     </mat-card-content>
     <mat-card-actions style="text-align: right">
       <button mat-button mat-flat-button type="submit" color="primary" *ngIf="actionMode === CREATE_MODE"
-              (click)="createAction()">Create
+              (click)="createAction()" [disabled]="!productForm.form.valid">Create
       </button>
       <button mat-button mat-flat-button type="submit" color="primary" *ngIf="actionMode === EDIT_MODE"
-              (click)="editAction()">Edit
+              (click)="editAction()" [disabled]="!productForm.form.valid && isChangeForm()">Save
       </button>
       <button mat-button mat-flat-button type="button"
               (click)="cancelEvent()">Cancel

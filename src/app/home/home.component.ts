@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
     type: '',
     message: ''
   };
+  productId: number;
   selectedList: Array<{id: 0, name: 'test'}>;
   isGridActive = true;
   isShowSpinner = true;
@@ -24,6 +25,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
   changeView(mode) {
     this.mode = mode;
+    if (this.mode === this.EDIT_MODE) {
+      this.productId = this.selectedList[0].id;
+    }
   }
   getError(alertObject) {
     this.alertObject = alertObject;
@@ -41,6 +45,7 @@ export class HomeComponent implements OnInit {
     this.isGridActive = false;
   }
   getSelectedList(selectedList) {
+    console.log('selectedList', selectedList);
     this.selectedList = selectedList;
   }
   getList() {

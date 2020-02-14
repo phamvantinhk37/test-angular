@@ -40,6 +40,7 @@
                  (productList)="getProducts($event)"
                  *ngIf="mode === VIEW_MODE"></app-view-home>
   <app-action-home [actionMode]="mode"
+                   [id] = "productId"
                    (alertObject)="getError($event)"
                    (cancelAction)="setMode($event)"
                    *ngIf="mode === EDIT_MODE || mode === CREATE_MODE"></app-action-home>

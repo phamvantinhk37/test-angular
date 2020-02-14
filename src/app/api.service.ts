@@ -8,7 +8,7 @@ import {catchError} from 'rxjs/operators';
 })
 export class ApiService {
   // private PRODUCT_API = 'https://my-json-server.typicode.com/phamvantinhk37/serverside/products';
-  private PRODUCT_API = 'http://localhost:3000/products';
+  private PRODUCT_API = 'http://localhost:8888/products';
   constructor(private httpClient: HttpClient) { }
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
@@ -24,10 +24,16 @@ export class ApiService {
   public sendGetRequest() {
     return this.httpClient.get(this.PRODUCT_API).pipe(catchError(this.handleError));
   }
+  public sendGetRequestById(id) {
+    return this.httpClient.get(`${this.PRODUCT_API}/${id}`).pipe(catchError(this.handleError));
+  }
   public sendPostRequest(newProduct) {
     return this.httpClient.post(this.PRODUCT_API, newProduct).pipe(catchError(this.handleError));
   }
   public sendDeleteRequest(id) {
     return this.httpClient.delete(`${this.PRODUCT_API}/${id}`).pipe(catchError(this.handleError));
+  }
+  public sendPutRequest(id, editProduct) {
+    return this.httpClient.put(`${this.PRODUCT_API}/${id}`, editProduct).pipe(catchError(this.handleError));
   }
 }

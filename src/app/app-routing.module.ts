@@ -7,7 +7,8 @@ import {AboutComponent} from './about/about.component';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'about', component: AboutComponent}
+  {path: 'about', component: AboutComponent},
+  { path: 'customer-domain', loadChildren: () => import('./customer-domain/customer-domain.module').then(m => m.CustomerDomainModule) }
 ];
 
 @NgModule({
