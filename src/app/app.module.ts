@@ -21,6 +21,7 @@ import { ViewHomeComponent } from './home/view-home/view-home.component';
 import { ActionHomeComponent } from './home/action-home/action-home.component';
 import { DeleteHomeComponent } from './home/delete-home/delete-home.component';
 import {FormsModule} from '@angular/forms';
+import {ShareModule} from './share/share.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {FormsModule} from '@angular/forms';
     MatButtonModule,
     MatProgressSpinnerModule,
     FontAwesomeModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ShareModule
   ],
   providers: [],
   bootstrap: [AppComponent]
