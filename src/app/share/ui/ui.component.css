@@ -64,6 +64,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   outline: 0 !important;
 }
 
+
 hr {
   box-sizing: content-box;
   height: 0;
@@ -1594,7 +1595,10 @@ pre code {
 .table-active > td {
   background-color: rgba(0, 0, 0, 0.075);
 }
-
+.active {
+  font-weight: bold;
+  color: red;
+}
 .table-hover .table-active:hover {
   background-color: rgba(0, 0, 0, 0.075);
 }

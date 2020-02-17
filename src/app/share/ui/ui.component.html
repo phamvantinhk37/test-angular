@@ -11,9 +11,9 @@
         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="/>
     </a>
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active" *ngFor="let item of data" (click)="setCurrentItem(item)">
+    <li class="nav-item" *ngFor="let item of data" (click)="setCurrentItem(item)">
       <hr class="sidebar-divider d-none d-md-block">
-      <a class="nav-link" href="{{item.url}}">
+      <a class="nav-link" routerLink="'unified-profile/{{item.url}}" [routerLinkActive]="'active'">
         <i class="{{item.icon}}"></i>
         <span>{{item.title | uppercase}}</span></a>
       <hr class="sidebar-divider d-none d-md-block">
@@ -220,7 +220,7 @@
       <div class="container-fluid">
         <!--Page Heading-->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          <h1 class="h3 mb-0 text-gray-800">{{currentItem.title}}</h1>
         </div>
         <hr class="sidebar-divider d-none d-md-block">
 

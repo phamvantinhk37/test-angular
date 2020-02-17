@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
-  { path: 'customer-domain', loadChildren: () => import('./customer-domain/customer-domain.module').then(m => m.CustomerDomainModule)}
+  {path: 'unified-profile', loadChildren: () => import('./unified-profile/unified-profile.module').then(m => m.UnifiedProfileModule) }
 ];
 
 @NgModule({

@@ -1,6 +1,5 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-customer-domain',
@@ -21,5 +20,4 @@ export class CustomerDomainComponent implements OnInit {
       {title: 'Customer Domain', url: 'customer-domain' , icon: 'fas fa-users-cog'}
     ];
   }
-
 }

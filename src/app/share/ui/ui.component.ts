@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Input} from '@angular/core';
 
 @Component({
@@ -11,8 +11,9 @@ import {Input} from '@angular/core';
 export class UiComponent implements OnInit {
   @Input() data: any;
   currentItem;
+  title: string;
   defaultData = [{title: 'Example-Title', url: 'example' , icon: 'fas fa-users-cog'}];
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
   ngOnInit() {}
   sidebarToggle() {
     $('body').toggleClass('sidebar-toggled');
@@ -31,5 +32,9 @@ export class UiComponent implements OnInit {
   setCurrentItem(currentItem) {
     this.currentItem = currentItem || this.data[0];
     console.log(this.currentItem);
+    this.title = currentItem.title;
   }
+  // navigate(currentItem) {
+  //   this.router.navigate([`unified-profile/${currentItem.url}`]);
+  // }
 }
