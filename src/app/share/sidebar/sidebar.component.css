@@ -1,0 +1,20 @@
+.sidebar-container {
+  width: 100%;
+  height: 100%;
+}
+.sidebar-sidenav {
+  width: 65px !important;
+  box-shadow: 1px 0 9px 0 #777;
+  transition: width .5s ease-in-out;
+}
+.mat-drawer-opened {
+  width: 210px !important;
+}
+@media (max-width: 768px) {
+  .sidebar-sidenav {
+    width: 65px;
+    transition: width .5s ease-in-out;
+    box-shadow: 1px 0 9px 0 #777;
+  }
+}
+

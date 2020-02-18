@@ -38,7 +38,6 @@ import {ShareModule} from './share/share.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     MatListModule,
     MatIconModule,
     MatCardModule,
