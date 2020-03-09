@@ -3,18 +3,24 @@
   height: 100%;
 }
 .sidebar-sidenav {
-  width: 65px !important;
+  width: 210px;
   box-shadow: 1px 0 9px 0 #777;
   transition: width .5s ease-in-out;
 }
-.mat-drawer-opened {
-  width: 210px !important;
+.sidebar-icon-margin-right-10 {
+  margin-right: 10px;
 }
 @media (max-width: 768px) {
   .sidebar-sidenav {
     width: 65px;
     transition: width .5s ease-in-out;
     box-shadow: 1px 0 9px 0 #777;
+  }
+  .sidebar-icon-margin-right-0 {
+    margin-right: 0;
+  }
+  .font-size-10 {
+    font-size: 10px;
   }
 }
 

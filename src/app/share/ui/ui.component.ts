@@ -34,7 +34,4 @@ export class UiComponent implements OnInit {
     console.log(this.currentItem);
     this.title = currentItem.title;
   }
-  // navigate(currentItem) {
-  //   this.router.navigate([`unified-profile/${currentItem.url}`]);
-  // }
 }

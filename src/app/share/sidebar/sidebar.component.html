@@ -1,11 +1,21 @@
 <mat-drawer-container class="sidebar-container" autosize>
   <mat-drawer #drawer class="sidebar-sidenav" mode="side">
-
+    <mat-list>
+      <mat-list-item>
+        <a class="text-center">
+          <i class="fas fa-users-cog sidebar-icon-margin-right-10 sidebar-icon-margin-right-0"></i>
+          <span class="font-size-10">Customer Domain</span>
+        </a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
+      <mat-list-item>Item 3</mat-list-item>
+    </mat-list>
   </mat-drawer>
 
   <div class="example-sidenav-content">
     <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav sidenav cai quan que`
+      Toggle
     </button>
   </div>
 
