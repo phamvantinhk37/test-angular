@@ -216,10 +216,13 @@ h3 {
     vertical-align: 0;
     border: 0;
     font-weight: 900;
-    content: '\f107';
     font-family: 'Font Awesome 5 Free';
   }
-  .sidebar .nav-item .nav-link[data-toggle="collapse"].collapsed::after {
+  .sidebar .nav-item .nav-link[data-toggle="collapse"].has-child-item::after {
+    content: '\f107';
+  }
+
+  .sidebar .nav-item .nav-link[data-toggle="collapse"].has-child-item.collapsed::after {
     content: '\f105';
   }
   .sidebar .sidebar-brand .sidebar-brand-icon svg {

@@ -10,12 +10,19 @@ import {Input} from '@angular/core';
 })
 export class UiComponent implements OnInit {
   @Input() data: any;
+  @Input() root: any;
   currentItem;
+  currentRoot;
   title: string;
   defaultData = [{title: 'Example-Title', url: 'example' , icon: 'fas fa-users-cog'}];
   constructor(private route: ActivatedRoute, private router: Router) { }
   ngOnInit() {
     this.setCurrentItem(this.data[0]);
+    if (!this.root) {
+      console.log('Please delare root menu');
+    } else {
+      this.currentRoot = this.root;
+    }
   }
   sidebarToggle() {
     $('body').toggleClass('sidebar-toggled');

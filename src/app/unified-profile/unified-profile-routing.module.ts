@@ -6,9 +6,9 @@ import {CustomerDomainComponent} from './customer-domain/customer-domain.compone
 import {UnifiedProfileComponent} from './unified-profile.component';
 
 const routes: Routes = [
-  { path: 'unified-profile', component: UnifiedProfileComponent},
-  { path: 'customer-domain',  component: CustomerDomainComponent},
-  { path: 'access-role',  component: AccessRoleProfileComponent}
+  { path: '', component: UnifiedProfileComponent},
+  { path: 'customer-domain-template',  component: CustomerDomainComponent},
+  { path: 'access-role-template',  component: AccessRoleProfileComponent}
   ];
 
 @NgModule({

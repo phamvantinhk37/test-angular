@@ -10,8 +10,7 @@ export class CustomerDomainComponent implements OnInit {
   sidebarMenu: any;
 
   ngOnInit() {
-    // this.sidebarMenu = this.initSidebar();
-    // console.log(this.routes);
+    this.sidebarMenu = this.initSidebar();
   }
   initSidebar() {
     return [

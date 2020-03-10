@@ -2,32 +2,23 @@
 
   <!-- Sidebar -->
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <!-- Nav Item - Dashboard -->
-<!--    <li class="nav-item" *ngFor="let item of data" (click)="setCurrentItem(item)">-->
-<!--      <hr class="sidebar-divider">-->
-<!--      <a class="nav-link">-->
-<!--        <i class="{{item.icon}}"></i>-->
-<!--        <span>{{item.title | uppercase}}</span></a>-->
-<!--      <hr class="sidebar-divider">-->
-<!--    </li>-->
     <!-- Heading -->
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-      Interface
+      {{currentRoot.title}}
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>Components</span>
+    <li class="nav-item" *ngFor="let item of data" (click)="setCurrentItem(item)">
+      <a class="collapsed nav-link" [ngClass]="{'has-child-item': item.menuItems && item.menuItems.length > 0}"
+         [href]="item.menuItems && item.menuItems.length > 0 ? '#'+item.id : currentRoot.url+'/'+item.url"
+         data-toggle="collapse">
+        <i class="{{item.icon}}"></i>
+        <span>{{item.title}}</span>
       </a>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="collapse-inner">
-          <a class="collapse-item" href="buttons.html">Buttons</a>
-        </div>
-        <div class="collapse-inner">
-          <a class="collapse-item" href="buttons.html">Buttons</a>
+      <div [id]="item.id" *ngIf="item.menuItems && item.menuItems.length > 0" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="collapse-inner" *ngFor="let childItem of item.menuItems">
+          <a class="collapse-item" href="{{currentRoot.url}}/{{childItem.url}}">{{childItem.title}}</a>
         </div>
       </div>
     </li>
