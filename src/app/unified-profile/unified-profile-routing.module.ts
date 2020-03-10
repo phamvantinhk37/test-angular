@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {AccessRoleProfileComponent} from './access-role-profile/access-role-profile.component';
 import {CustomerDomainComponent} from './customer-domain/customer-domain.component';
+import {UnifiedProfileComponent} from './unified-profile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'customer-domain', pathMatch: 'full'},
+  { path: 'unified-profile', component: UnifiedProfileComponent},
   { path: 'customer-domain',  component: CustomerDomainComponent},
   { path: 'access-role',  component: AccessRoleProfileComponent}
   ];

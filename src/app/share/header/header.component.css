@@ -1,5 +1,6 @@
 .share-header {
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  background: #3680c1;
 }
 @media (min-width: 768px) {
   .d-md-none {

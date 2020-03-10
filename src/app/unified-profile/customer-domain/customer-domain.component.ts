@@ -8,11 +8,10 @@ import {Router} from '@angular/router';
 })
 export class CustomerDomainComponent implements OnInit {
   sidebarMenu: any;
-  constructor(private routes: Router) { }
 
   ngOnInit() {
-    this.sidebarMenu = this.initSidebar();
-    console.log(this.routes);
+    // this.sidebarMenu = this.initSidebar();
+    // console.log(this.routes);
   }
   initSidebar() {
     return [

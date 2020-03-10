@@ -10,11 +10,11 @@
     },
     {
       "id": 9,
-      "name": "Awesome Fresh Chips",
-      "description": "Dolorum molestias ut fuga magnam voluptatem illo ut cumque sunt. Qui alias magni occaecati ducimus.",
-      "price": "173.00",
-      "imageUrl": "https://source.unsplash.com/1600x900/?product",
-      "quantity": 97118
+      "name": "adada",
+      "description": "dasdasdasda",
+      "price": 0,
+      "quantity": 0,
+      "imageUrl": "https://source.unsplash.com/1600x900/?product"
     }
   ]
 }

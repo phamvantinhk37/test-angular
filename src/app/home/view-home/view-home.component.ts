@@ -21,6 +21,7 @@ export class ViewHomeComponent implements OnInit, OnChanges {
     this.getList();
   }
   ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
     this.getList();
   }
   getList() {

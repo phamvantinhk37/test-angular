@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import * as $ from 'jquery';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Input} from '@angular/core';
@@ -14,7 +14,9 @@ export class UiComponent implements OnInit {
   title: string;
   defaultData = [{title: 'Example-Title', url: 'example' , icon: 'fas fa-users-cog'}];
   constructor(private route: ActivatedRoute, private router: Router) { }
-  ngOnInit() {}
+  ngOnInit() {
+    this.setCurrentItem(this.data[0]);
+  }
   sidebarToggle() {
     $('body').toggleClass('sidebar-toggled');
     $('.sidebar').toggleClass('toggled');
@@ -30,7 +32,7 @@ export class UiComponent implements OnInit {
   }
 
   setCurrentItem(currentItem) {
-    this.currentItem = currentItem || this.data[0];
+    this.currentItem = currentItem;
     console.log(this.currentItem);
     this.title = currentItem.title;
   }

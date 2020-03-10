@@ -8,18 +8,14 @@ import {Router} from '@angular/router';
 })
 export class UnifiedProfileComponent implements OnInit {
   sidebarMenu: any;
-  constructor(private routes: Router) { }
 
   ngOnInit() {
     this.sidebarMenu = this.initSidebar();
-    console.log(this.routes);
   }
   initSidebar() {
-    const unifiedProfile = {title: 'Unified Profile', url: 'unified-profile' , icon: 'fas fa-users-cog', menuItems: []};
-    const accessRoleProfile = {title: 'Customer Domain', url: 'customer-domain' , icon: 'fas fa-users-cog', parent: unifiedProfile};
-    const customerDomain = {title: 'Customer Domain', url: 'customer-domain' , icon: 'fas fa-users-cog', parent: unifiedProfile};
-    unifiedProfile.menuItems.push(accessRoleProfile);
-    unifiedProfile.menuItems.push(customerDomain);
-    return unifiedProfile;
+   return [
+     {title: 'Access Role Profile', url: 'access-role' , icon: 'fas fa-users-cog'},
+     {title: 'Customer Domain', url: 'customer-domain' , icon: 'fas fa-users-cog'}
+   ];
   }
 }
