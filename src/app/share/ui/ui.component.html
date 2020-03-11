@@ -10,15 +10,20 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item" *ngFor="let item of data" (click)="setCurrentItem(item)">
-      <a class="collapsed nav-link" [ngClass]="{'has-child-item': item.menuItems && item.menuItems.length > 0}"
+      <a class="collapsed nav-link" *ngIf="item.menuItems && item.menuItems.length > 0" [ngClass]="{'has-child-item': item.menuItems && item.menuItems.length > 0}"
          [href]="item.menuItems && item.menuItems.length > 0 ? '#'+item.id : currentRoot.url+'/'+item.url"
          data-toggle="collapse">
         <i class="{{item.icon}}"></i>
         <span>{{item.title}}</span>
       </a>
+      <a class="collapsed nav-link" *ngIf="!item.menuItems || item.menuItems.length === 0" [ngClass]="{'has-child-item': item.menuItems && item.menuItems.length > 0}"
+         (click)="navigateItem(currentRoot.url, item.url)">
+        <i class="{{item.icon}}"></i>
+        <span>{{item.title}}</span>
+      </a>
       <div [id]="item.id" *ngIf="item.menuItems && item.menuItems.length > 0" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="collapse-inner" *ngFor="let childItem of item.menuItems">
-          <a class="collapse-item" href="{{currentRoot.url}}/{{childItem.url}}">{{childItem.title}}</a>
+          <a class="collapse-item" (click)="navigateItem(currentRoot.url, childItem.url)">{{childItem.title}}</a>
         </div>
       </div>
     </li>
@@ -54,8 +59,7 @@
           <h1 class="h3 app-heading">{{currentItem.title}}</h1>
         </div>
         <hr class="sidebar-divider">
-
-        <ng-template></ng-template>
+        <router-outlet name="content"></router-outlet>
 
       </div>
       <!-- /.container-fluid -->

@@ -43,4 +43,7 @@ export class UiComponent implements OnInit {
     console.log(this.currentItem);
     this.title = currentItem.title;
   }
+  navigateItem(rootUrl, url) {
+    this.router.navigateByUrl(rootUrl + '/' + url);
+  }
 }
