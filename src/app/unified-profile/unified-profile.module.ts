@@ -6,10 +6,12 @@ import { UnifiedProfileComponent } from './unified-profile.component';
 import { CustomerDomainComponent } from './customer-domain/customer-domain.component';
 import { AccessRoleProfileComponent } from './access-role-profile/access-role-profile.component';
 import {ShareModule} from '../share/share.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { WorkflowComponent } from './workflow/workflow.component';
 
 
 @NgModule({
-  declarations: [UnifiedProfileComponent, CustomerDomainComponent, AccessRoleProfileComponent],
+  declarations: [UnifiedProfileComponent, CustomerDomainComponent, AccessRoleProfileComponent, DashboardComponent, WorkflowComponent],
   imports: [
     CommonModule,
     UnifiedProfileRoutingModule,

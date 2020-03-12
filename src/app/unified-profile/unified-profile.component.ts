@@ -22,14 +22,14 @@ export class UnifiedProfileComponent implements OnInit {
       {title: 'Workflow', url: 'workflow', icon: 'fas fa-users-cog', id: 'workflow'},
       {
         title: 'Template', icon: 'fas fa-users-cog', id: 'template', menuItems: [
-          {title: 'Access Role Profile', url: 'access-role-template', icon: 'fas fa-users-cog'},
-          {title: 'Customer Domain', url: 'customer-domain-template', icon: 'fas fa-users-cog'},
+          {title: 'Access Role Profile', url: 'access-role-template', id: 'access-role-template', icon: 'fas fa-users-cog'},
+          {title: 'Customer Domain', url: 'customer-domain-template', id: 'customer-domain-template', icon: 'fas fa-users-cog'},
         ]
       },
       {
         title: 'Device Config', url: 'customer-domain', icon: 'fas fa-users-cog', id: 'device-config', menuItems: [
-          {title: 'Access Role Profile', url: 'access-role-device-config', icon: 'fas fa-users-cog'},
-          {title: 'Customer Domain', url: 'customer-domain-device-config', icon: 'fas fa-users-cog'},
+          {title: 'Access Role Profile', url: 'access-role-device-config', id: 'access-role-device-config',  icon: 'fas fa-users-cog'},
+          {title: 'Customer Domain', url: 'customer-domain-device-config', id: 'customer-domain-device-config', icon: 'fas fa-users-cog'},
         ]
       }
     ];

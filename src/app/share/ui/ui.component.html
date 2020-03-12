@@ -1,7 +1,7 @@
 <div id="customer-domain" (window:resize)="onResize($event)">
 
   <!-- Sidebar -->
-  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <ul class="navbar-nav nav-pills bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Heading -->
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
@@ -9,21 +9,24 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item" *ngFor="let item of data" (click)="setCurrentItem(item)">
+    <li class="nav-item" *ngFor="let item of data">
       <a class="collapsed nav-link" *ngIf="item.menuItems && item.menuItems.length > 0" [ngClass]="{'has-child-item': item.menuItems && item.menuItems.length > 0}"
          [href]="item.menuItems && item.menuItems.length > 0 ? '#'+item.id : currentRoot.url+'/'+item.url"
          data-toggle="collapse">
         <i class="{{item.icon}}"></i>
         <span>{{item.title}}</span>
       </a>
-      <a class="collapsed nav-link" *ngIf="!item.menuItems || item.menuItems.length === 0" [ngClass]="{'has-child-item': item.menuItems && item.menuItems.length > 0}"
-         (click)="navigateItem(currentRoot.url, item.url)">
+      <a class="collapsed nav-link" *ngIf="!item.menuItems || item.menuItems.length === 0"
+         [ngClass]="{'has-child-item': item.menuItems && item.menuItems.length > 0, 'active' : item.id === currentItem.id}"
+         (click)="navigateItem(currentRoot, item, null)">
         <i class="{{item.icon}}"></i>
         <span>{{item.title}}</span>
       </a>
       <div [id]="item.id" *ngIf="item.menuItems && item.menuItems.length > 0" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="collapse-inner" *ngFor="let childItem of item.menuItems">
-          <a class="collapse-item" (click)="navigateItem(currentRoot.url, childItem.url)">{{childItem.title}}</a>
+        <div class="collapse-inner" *ngFor="let childItem of item.menuItems"
+             [ngClass]="{'active': childItem.id === currentItem.id}"
+             (click)="navigateItem(currentRoot, item, childItem)">
+          <a class="collapse-item">{{childItem.title}}</a>
         </div>
       </div>
     </li>
@@ -50,16 +53,14 @@
                 Home
               </a>
             </li>
-            <li class="breadcrumb-item">Library</li>
+            <li class="breadcrumb-item" *ngIf="parentItem">
+              {{parentItem.title}}
+            </li>
             <li class="breadcrumb-item active" aria-current="page">{{currentItem.title}}</li>
           </ol>
         </nav>
         <!--Page Heading-->
-        <div class="d-sm-flex align-items-center justify-content-between">
-          <h1 class="h3 app-heading">{{currentItem.title}}</h1>
-        </div>
-        <hr class="sidebar-divider">
-        <router-outlet name="content"></router-outlet>
+        <router-outlet></router-outlet>
 
       </div>
       <!-- /.container-fluid -->

@@ -96,6 +96,7 @@ a:focus {
   text-align: center;
   padding: 0.75rem 1rem;
   width: 6.5rem;
+  cursor: pointer;
 }
 
 .sidebar .nav-item .nav-link span {
@@ -165,10 +166,13 @@ h3 {
 .sidebar .nav-item .collapse-inner .collapse-item {
   color: white;
   text-decoration: none;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8)
 }
 .sidebar .nav-item .collapse-inner:hover {
   background-color: #71b0e4;
   cursor: pointer;
+  color: rgba(255, 255, 255, 1) !important;
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -208,6 +212,13 @@ h3 {
   .sidebar .nav-item .nav-link span {
     font-size: 0.85rem;
     display: inline;
+  }
+  .sidebar .nav-item .active {
+    background-color: #428bca;
+    color: rgba(255, 255, 255, 1) !important;
+  }
+  .sidebar .nav-item .active svg {
+    color: rgba(255, 255, 255, 1) !important;
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
     width: 1rem;
