@@ -9,7 +9,7 @@ body {
 .breadcrumb {
   margin-top: 1px;
   padding: 0 5px;
-  margin-bottom: 0;
+  margin-bottom: 5px;
   background-color: #ecf3fa;
   border-bottom: thin solid #428bca;
   border-radius: 0;

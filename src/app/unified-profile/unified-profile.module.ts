@@ -8,6 +8,7 @@ import { AccessRoleProfileComponent } from './access-role-profile/access-role-pr
 import {ShareModule} from '../share/share.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WorkflowComponent } from './workflow/workflow.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { WorkflowComponent } from './workflow/workflow.component';
   imports: [
     CommonModule,
     UnifiedProfileRoutingModule,
-    ShareModule
+    ShareModule,
+    AgGridModule.withComponents([])
   ],
 })
 export class UnifiedProfileModule { }

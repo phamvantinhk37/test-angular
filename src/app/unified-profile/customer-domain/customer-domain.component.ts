@@ -7,15 +7,24 @@ import {Router} from '@angular/router';
   styleUrls: ['./customer-domain.component.css']
 })
 export class CustomerDomainComponent implements OnInit {
-  sidebarMenu: any;
-
+  columnDefs;
+  rowData;
+  domLayout;
   ngOnInit() {
-    this.sidebarMenu = this.initSidebar();
   }
-  initSidebar() {
-    return [
-      {title: 'Access Role Profile', url: 'access-role' , icon: 'fas fa-users-cog'},
-      {title: 'Customer Domain', url: 'customer-domain' , icon: 'fas fa-users-cog'}
+  constructor() {
+    this.columnDefs = [
+      {field: 'make' },
+      {field: 'model' },
+      {field: 'price'}
     ];
+
+    this.rowData = [
+      { make: 'Toyota', model: 'Celica', price: 35000 },
+      { make: 'Ford', model: 'Mondeo', price: 32000 },
+      { make: 'Porsche', model: 'Boxter', price: 72000 },
+      { make: 'Porsche', model: 'Boxter', price: 72000 },
+    ];
+    this.domLayout = 'autoHeight';
   }
 }
