@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,6 +10,7 @@ export class CustomerDomainComponent implements OnInit {
   columnDefs;
   rowData;
   domLayout;
+  gridOptions;
   ngOnInit() {
   }
   constructor() {
@@ -23,8 +24,24 @@ export class CustomerDomainComponent implements OnInit {
       { make: 'Toyota', model: 'Celica', price: 35000 },
       { make: 'Ford', model: 'Mondeo', price: 32000 },
       { make: 'Porsche', model: 'Boxter', price: 72000 },
-      { make: 'Porsche', model: 'Boxter', price: 72000 },
+      { make: 'Porsche', model: 'Boxter', price: 72000 }
     ];
-    this.domLayout = 'autoHeight';
+    this.gridOptions = {
+      defaultColDef: {
+        resizable: true
+      },
+      columnDefs: this.columnDefs,
+      rowData: this.rowData,
+      domLayout: 'autoHeight',
+      // gridReady: onGridReady,
+      onFirstDataRendered: onFirstDataRendered,
+      api: {}
+    };
+    function onGridReady(params) {
+      params.api.sizeColumnsToFit();
+    }
+    function onFirstDataRendered(params) {
+      params.api.sizeColumnsToFit();
+    }
   }
 }
