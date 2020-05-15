@@ -30,12 +30,7 @@
     </div>
   </div>
   <hr>
-  <div>
-    <ag-grid-angular
-      style="width: 100%; height: 100%"
-      class="ag-theme-balham"
-      [gridOptions]="gridOptions" >
-    </ag-grid-angular>
-  </div>
-
+  <app-customer-domain-view *ngIf="mode === VIEW_MODE"></app-customer-domain-view>
+  <app-customer-domain-action *ngIf="mode === EDIT_MODE || mode === CREATE_MODE"
+                              [actionMode]="mode" (cancelAction)="setMode($event)"></app-customer-domain-action>
 </div>

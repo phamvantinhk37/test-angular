@@ -7,41 +7,21 @@ import {Router} from '@angular/router';
   styleUrls: ['./customer-domain.component.css']
 })
 export class CustomerDomainComponent implements OnInit {
-  columnDefs;
-  rowData;
-  domLayout;
-  gridOptions;
+  VIEW_MODE = 'view-mode';
+  CREATE_MODE = 'create-mode';
+  EDIT_MODE = 'edit-mode';
+  mode = this.VIEW_MODE;
+
   ngOnInit() {
   }
-  constructor() {
-    this.columnDefs = [
-      {field: 'make' },
-      {field: 'model' },
-      {field: 'price'}
-    ];
-
-    this.rowData = [
-      { make: 'Toyota', model: 'Celica', price: 35000 },
-      { make: 'Ford', model: 'Mondeo', price: 32000 },
-      { make: 'Porsche', model: 'Boxter', price: 72000 },
-      { make: 'Porsche', model: 'Boxter', price: 72000 }
-    ];
-    this.gridOptions = {
-      defaultColDef: {
-        resizable: true
-      },
-      columnDefs: this.columnDefs,
-      rowData: this.rowData,
-      domLayout: 'autoHeight',
-      // gridReady: onGridReady,
-      onFirstDataRendered: onFirstDataRendered,
-      api: {}
-    };
-    function onGridReady(params) {
-      params.api.sizeColumnsToFit();
-    }
-    function onFirstDataRendered(params) {
-      params.api.sizeColumnsToFit();
-    }
+  constructor() {}
+  changeView(mode) {
+    this.mode = mode;
+    // if (this.mode === this.EDIT_MODE) {
+    //   this.productId = this.selectedList[0].id;
+    // }
+  }
+  setMode(mode) {
+    this.mode = mode;
   }
 }

@@ -9,15 +9,25 @@ import {ShareModule} from '../share/share.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WorkflowComponent } from './workflow/workflow.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { CustomerDomainViewComponent } from './customer-domain/customer-domain-view/customer-domain-view.component';
+import { CustomerDomainActionComponent } from './customer-domain/customer-domain-action/customer-domain-action.component';
+import {ComponentShareModule} from '../component-share/component-share.module';
 
 
 @NgModule({
-  declarations: [UnifiedProfileComponent, CustomerDomainComponent, AccessRoleProfileComponent, DashboardComponent, WorkflowComponent],
+  declarations: [
+    UnifiedProfileComponent,
+    CustomerDomainComponent,
+    AccessRoleProfileComponent,
+    DashboardComponent,
+    WorkflowComponent,
+    CustomerDomainViewComponent,
+    CustomerDomainActionComponent],
   imports: [
     CommonModule,
     UnifiedProfileRoutingModule,
     ShareModule,
-    AgGridModule.withComponents([])
+    ComponentShareModule
   ],
 })
 export class UnifiedProfileModule { }

@@ -15,6 +15,14 @@
       "price": 0,
       "quantity": 0,
       "imageUrl": "https://source.unsplash.com/1600x900/?product"
+    },
+    {
+      "id": 10,
+      "name": "Test",
+      "description": "123",
+      "price": 1,
+      "quantity": 123,
+      "imageUrl": "https://source.unsplash.com/1600x900/?product"
     }
   ]
 }

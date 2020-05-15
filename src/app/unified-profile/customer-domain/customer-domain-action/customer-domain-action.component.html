@@ -1,0 +1,27 @@
+
+  <div class="card">
+    <div class="card-header">
+      <h4 *ngIf="actionMode === CREATE_MODE">Create Customer Domain</h4>
+      <h4 *ngIf="actionMode === EDIT_MODE">Edit Customer Domain</h4>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group row">
+          <label class="col-sm-3 text-right col-form-label font-weight-bold">*Customer Domain ID</label>
+          <div class="col-sm-5">
+            <input type="password" class="form-control" placeholder="0 - 511">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 text-right col-form-label font-weight-bold">*Customer Domain Description</label>
+          <div class="col-sm-5">
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer text-right">
+      <button type="submit" class="btn btn-primary mb-2" style="margin-right: 5px">Create</button>
+      <button type="submit" class="btn btn-secondary mb-2" (click)="cancelEvent()">Cancel</button>
+    </div>
+  </div>
