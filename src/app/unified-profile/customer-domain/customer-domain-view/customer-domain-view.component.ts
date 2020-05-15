@@ -5,7 +5,7 @@ import {Component, EventEmitter, OnChanges, OnInit, Output} from '@angular/core'
   templateUrl: './customer-domain-view.component.html',
   styleUrls: ['./customer-domain-view.component.css']
 })
-export class CustomerDomainViewComponent implements OnInit, OnChanges {
+export class CustomerDomainViewComponent implements OnInit {
   @Output() selectedList = new EventEmitter<Array<object>>();
   attr;
   data;

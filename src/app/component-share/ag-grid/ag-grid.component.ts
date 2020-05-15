@@ -7,7 +7,6 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 })
 export class AgGridComponent implements OnInit {
   @Output() selectedList  = new EventEmitter<Array<object>>();
-  @Input() selectedList: Array<object>;
   @Input() gridOptions: object;
   @Input() columnDefs: Array<object>;
   @Input() rowData: Array<object>;
