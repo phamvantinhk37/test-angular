@@ -1,2 +1,3 @@
-<app-ag-grid [attr]="attr"
-             [config]="configAgGrid" [dataView]="data"></app-ag-grid>
+<app-ag-grid [columnDefs]="attr"
+             [rowData]="data"
+             [gridOptions]="configAgGrid" (selectedList)="getSelectedList($event)"></app-ag-grid>

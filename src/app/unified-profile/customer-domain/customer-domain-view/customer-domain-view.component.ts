@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnChanges, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-customer-domain-view',
   templateUrl: './customer-domain-view.component.html',
   styleUrls: ['./customer-domain-view.component.css']
 })
-export class CustomerDomainViewComponent implements OnInit {
+export class CustomerDomainViewComponent implements OnInit, OnChanges {
+  @Output() selectedList = new EventEmitter<Array<object>>();
   attr;
   data;
   configAgGrid;
@@ -30,14 +31,14 @@ export class CustomerDomainViewComponent implements OnInit {
       rowData: this.data,
       domLayout: 'autoHeight',
       // gridReady: onGridReady,
-      // onFirstDataRendered: onFirstDataRendered,
-      // onSelectionChanged: onSelectionChanged
+      onFirstDataRendered: onFirstDataRendered
     };
-    // function onGridReady(params) {
-    //   params.api.sizeColumnsToFit();
-    // }
+    function onFirstDataRendered(params) {
+      params.api.sizeColumnsToFit();
+    }
   }
-
-  ngOnInit() {
+  ngOnInit() {}
+  getSelectedList(selectedList) {
+    this.selectedList.emit(selectedList);
   }
 }

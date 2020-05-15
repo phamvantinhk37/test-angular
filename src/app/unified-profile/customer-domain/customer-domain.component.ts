@@ -11,7 +11,7 @@ export class CustomerDomainComponent implements OnInit {
   CREATE_MODE = 'create-mode';
   EDIT_MODE = 'edit-mode';
   mode = this.VIEW_MODE;
-
+  selectedList = [];
   ngOnInit() {
   }
   constructor() {}
@@ -23,5 +23,9 @@ export class CustomerDomainComponent implements OnInit {
   }
   setMode(mode) {
     this.mode = mode;
+  }
+  getSelectedList(selectedList) {
+    this.selectedList = [selectedList];
+    console.log(this.selectedList);
   }
 }

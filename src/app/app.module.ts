@@ -22,6 +22,7 @@ import { ActionHomeComponent } from './home/action-home/action-home.component';
 import { DeleteHomeComponent } from './home/delete-home/delete-home.component';
 import {FormsModule} from '@angular/forms';
 import {ShareModule} from './share/share.module';
+import {AgGridModule} from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
