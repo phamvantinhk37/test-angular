@@ -12,6 +12,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { CustomerDomainViewComponent } from './customer-domain/customer-domain-view/customer-domain-view.component';
 import { CustomerDomainActionComponent } from './customer-domain/customer-domain-action/customer-domain-action.component';
 import {ComponentShareModule} from '../component-share/component-share.module';
+import {UnifiedProfileService} from './unified-profile.service';
 
 
 @NgModule({
@@ -29,5 +30,6 @@ import {ComponentShareModule} from '../component-share/component-share.module';
     ShareModule,
     ComponentShareModule
   ],
+  providers: [UnifiedProfileService]
 })
 export class UnifiedProfileModule { }

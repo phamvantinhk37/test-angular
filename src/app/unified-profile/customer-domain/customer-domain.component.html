@@ -30,7 +30,14 @@
     </div>
   </div>
   <hr>
-  <app-customer-domain-view *ngIf="mode === VIEW_MODE" (selectedList)="getSelectedList($event)"></app-customer-domain-view>
+  <div class="alert" style="margin-top: 10px" [ngClass]="alertObject.type" *ngIf="alertObject.message">
+    {{alertObject.message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <app-customer-domain-view *ngIf="mode === VIEW_MODE" (selectedList)="getSelectedList($event)"
+                            (alertObject) = "getError($event)"></app-customer-domain-view>
   <app-customer-domain-action *ngIf="mode === EDIT_MODE || mode === CREATE_MODE"
                               [actionMode]="mode" (cancelAction)="setMode($event)"></app-customer-domain-action>
 </div>

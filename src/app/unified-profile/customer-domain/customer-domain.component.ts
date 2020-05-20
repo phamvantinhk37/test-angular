@@ -12,6 +12,10 @@ export class CustomerDomainComponent implements OnInit {
   EDIT_MODE = 'edit-mode';
   mode = this.VIEW_MODE;
   selectedList = [];
+  alertObject = {
+    type: '',
+    message: ''
+  };
   ngOnInit() {
   }
   constructor() {}
@@ -25,7 +29,10 @@ export class CustomerDomainComponent implements OnInit {
     this.mode = mode;
   }
   getSelectedList(selectedList) {
-    this.selectedList = [selectedList];
+    this.selectedList = selectedList;
     console.log(this.selectedList);
+  }
+  getError(alertObject) {
+    this.alertObject = alertObject;
   }
 }
