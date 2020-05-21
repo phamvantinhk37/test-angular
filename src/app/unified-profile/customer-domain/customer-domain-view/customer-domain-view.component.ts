@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ApiService} from '../../../api.service';
 
 @Component({
@@ -6,11 +6,11 @@ import {ApiService} from '../../../api.service';
   templateUrl: './customer-domain-view.component.html',
   styleUrls: ['./customer-domain-view.component.css']
 })
-export class CustomerDomainViewComponent implements OnInit {
+export class CustomerDomainViewComponent implements OnInit, OnChanges {
   @Output() selectedList = new EventEmitter<Array<object>>();
   @Output() alertObject = new EventEmitter<object>();
+  @Input() data: Array<object>;
   attr;
-  data;
   configAgGrid;
   constructor(private apiService: ApiService) {
     this.attr = [
@@ -21,7 +21,7 @@ export class CustomerDomainViewComponent implements OnInit {
       {field: 'customerDomainId'},
       {field: 'customerDomainDesc'},
     ];
-    this.getList();
+    // this.getList();
     this.configAgGrid = {
       defaultColDef: {
         resizable: true,
@@ -41,18 +41,12 @@ export class CustomerDomainViewComponent implements OnInit {
     };
   }
   ngOnInit() {}
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   console.log('changes ', changes);
+  //   this.getList();
+  // }
+
   getSelectedList(selectedList) {
     this.selectedList.emit(selectedList);
-  }
-  getList() {
-    this.apiService.getCustomerDomain().subscribe((data: any[]) => {
-      this.data = data;
-    }, (error: string) => {
-      console.log(error);
-      this.alertObject.emit({
-        type: 'alert-danger',
-        message: error
-      });
-    });
   }
 }

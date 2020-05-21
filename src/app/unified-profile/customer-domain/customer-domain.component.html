@@ -17,7 +17,7 @@
               data-target="#exampleModal" style="margin-right: 5px">
         <i class="fas fa-trash-alt"></i>
       </button>
-      <div class="btn-group" role="group">
+      <div class="btn-group" role="group" style="margin-right: 5px">
         <button type="button" class="btn btn-secondary btn-sm"
                 [ngClass]="{'active': isGridActive}" (click)="activeGridView()">
           <i class="fas fa-th-large"></i>
@@ -27,6 +27,10 @@
           <i class="fas fas fa-list"></i>
         </button>
       </div>
+      <button type="button" class="btn-sm btn btn-secondary"
+              (click)="refreshAction(true)">
+        <i class="fas fa-sync-alt"></i>
+      </button>
     </div>
   </div>
   <hr>
@@ -37,7 +41,26 @@
     </button>
   </div>
   <app-customer-domain-view *ngIf="mode === VIEW_MODE" (selectedList)="getSelectedList($event)"
-                            (alertObject) = "getError($event)"></app-customer-domain-view>
+                            (alertObject) = "getError($event)" [data]="data"></app-customer-domain-view>
   <app-customer-domain-action *ngIf="mode === EDIT_MODE || mode === CREATE_MODE" [editData]="editData" (alertObject)="getError($event)"
-                              [actionMode]="mode" (cancelAction)="setMode($event)"></app-customer-domain-action>
+                              [actionMode]="mode" (refreshAction)="refreshAction($event)" (cancelAction)="setMode($event)"></app-customer-domain-action>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Dialog</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you Delete {{selectedList ? selectedList.length : 0}} profile?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="deleteCustomerDomain()" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>

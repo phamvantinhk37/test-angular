@@ -12,6 +12,7 @@ export class CustomerDomainActionComponent implements OnInit {
   @Output() alertObject = new EventEmitter<object>();
   @Input() actionMode: string;
   @Input() editData: object;
+  @Output() refreshAction = new EventEmitter <boolean>();
   VIEW_MODE = 'view-mode';
   CREATE_MODE = 'create-mode';
   EDIT_MODE = 'edit-mode';
@@ -40,6 +41,7 @@ export class CustomerDomainActionComponent implements OnInit {
         message: `Customer Domain ${successData.customerDomainId} is created successful`
       });
       this.cancelAction.emit(this.VIEW_MODE);
+      this.refreshAction.emit(true);
     }, (error: string) => {
       this.alertObject.emit( {
         type: 'alert-danger',
@@ -58,6 +60,7 @@ export class CustomerDomainActionComponent implements OnInit {
         message: `Customer Domain ${successData.customerDomainId} is edit successful`
       });
       this.cancelAction.emit(this.VIEW_MODE);
+      this.refreshAction.emit(true);
     }, (error: string) => {
       this.alertObject.emit( {
         type: 'alert-danger',

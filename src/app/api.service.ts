@@ -46,4 +46,7 @@ export class ApiService {
   public editCustomerDomain(id, newCustomerDomain) {
     return this.httpClient.put(`${this.CUSTOMER_DOMAIN_API}/${id}`, newCustomerDomain).pipe(catchError(this.handleError));
   }
+  public deleteCustomerDomain(id) {
+    return this.httpClient.delete(`${this.CUSTOMER_DOMAIN_API}/${id}`).pipe(catchError(this.handleError));
+  }
 }
