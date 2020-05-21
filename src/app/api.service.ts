@@ -40,4 +40,10 @@ export class ApiService {
   public getCustomerDomain() {
     return this.httpClient.get(this.CUSTOMER_DOMAIN_API).pipe(catchError(this.handleError));
   }
+  public createCustomerDomain(newCustomerDomain) {
+    return this.httpClient.post(this.CUSTOMER_DOMAIN_API, newCustomerDomain).pipe(catchError(this.handleError));
+  }
+  public editCustomerDomain(id, newCustomerDomain) {
+    return this.httpClient.put(`${this.CUSTOMER_DOMAIN_API}/${id}`, newCustomerDomain).pipe(catchError(this.handleError));
+  }
 }

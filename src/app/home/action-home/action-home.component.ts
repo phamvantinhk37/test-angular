@@ -65,10 +65,10 @@ export class ActionHomeComponent implements OnInit {
       });
       this.cancelAction.emit(this.VIEW_MODE);
     }, (error: string) => {
-      this.actionAlert = {
+      this.alertObject.emit({
         type: 'alert-danger',
         message: error
-      };
+      });
       console.log(error);
     });
   }

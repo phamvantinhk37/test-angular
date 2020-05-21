@@ -11,6 +11,7 @@ for(var i=1; i<=10; i++){
     quantity: faker.random.number()
   });
   database.customerDomain.push({
+    id: i,
     customerDomainId: i,
     customerDomainDesc: faker.lorem.sentences()
   })

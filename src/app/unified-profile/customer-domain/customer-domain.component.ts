@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import {Component, OnInit, HostListener, SimpleChanges, OnChanges, Input} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,19 +11,19 @@ export class CustomerDomainComponent implements OnInit {
   CREATE_MODE = 'create-mode';
   EDIT_MODE = 'edit-mode';
   mode = this.VIEW_MODE;
+  editData : object;
   selectedList = [];
   alertObject = {
     type: '',
     message: ''
   };
-  ngOnInit() {
-  }
   constructor() {}
+  ngOnInit() {}
   changeView(mode) {
     this.mode = mode;
-    // if (this.mode === this.EDIT_MODE) {
-    //   this.productId = this.selectedList[0].id;
-    // }
+    if (this.mode === this.EDIT_MODE) {
+      this.editData = this.selectedList[0].data;
+    }
   }
   setMode(mode) {
     this.mode = mode;

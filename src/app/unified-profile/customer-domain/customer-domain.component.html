@@ -38,6 +38,6 @@
   </div>
   <app-customer-domain-view *ngIf="mode === VIEW_MODE" (selectedList)="getSelectedList($event)"
                             (alertObject) = "getError($event)"></app-customer-domain-view>
-  <app-customer-domain-action *ngIf="mode === EDIT_MODE || mode === CREATE_MODE"
+  <app-customer-domain-action *ngIf="mode === EDIT_MODE || mode === CREATE_MODE" [editData]="editData" (alertObject)="getError($event)"
                               [actionMode]="mode" (cancelAction)="setMode($event)"></app-customer-domain-action>
 </div>

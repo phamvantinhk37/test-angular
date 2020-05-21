@@ -13,6 +13,7 @@ import { CustomerDomainViewComponent } from './customer-domain/customer-domain-v
 import { CustomerDomainActionComponent } from './customer-domain/customer-domain-action/customer-domain-action.component';
 import {ComponentShareModule} from '../component-share/component-share.module';
 import {UnifiedProfileService} from './unified-profile.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -28,7 +29,9 @@ import {UnifiedProfileService} from './unified-profile.service';
     CommonModule,
     UnifiedProfileRoutingModule,
     ShareModule,
-    ComponentShareModule
+    ComponentShareModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [UnifiedProfileService]
 })

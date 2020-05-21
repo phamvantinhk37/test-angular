@@ -5,23 +5,35 @@
       <h4 *ngIf="actionMode === EDIT_MODE">Edit Customer Domain</h4>
     </div>
     <div class="card-body">
-      <form>
+      <form #customerDomainForm="ngForm">
         <div class="form-group row">
           <label class="col-sm-3 text-right col-form-label font-weight-bold">*Customer Domain ID</label>
           <div class="col-sm-5">
-            <input type="password" class="form-control" placeholder="0 - 511">
+            <input type="number" id="customerDomainId" name="customerDomainId"
+                   [(ngModel)]="model.customerDomainId" class="form-control" required
+                   #customerDomainId=ngModel placeholder="0 - 511">
+            <div [hidden]="customerDomainId.valid || customerDomainId.pristine" class="text-danger">
+              Customer Domain ID is required
+            </div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 text-right col-form-label font-weight-bold">*Customer Domain Description</label>
           <div class="col-sm-5">
-            <textarea class="form-control" rows="3"></textarea>
+            <textarea class="form-control" id="customerDomainDesc" name="customerDomainDesc"
+                      required #customerDomainDesc=ngModel [(ngModel)]="model.customerDomainDesc" rows="3"></textarea>
+            <div [hidden]="customerDomainDesc.valid || customerDomainDesc.pristine" class="text-danger">
+              Customer Domain Description is required
+            </div>
           </div>
         </div>
       </form>
     </div>
     <div class="card-footer text-right">
-      <button type="submit" class="btn btn-primary mb-2" style="margin-right: 5px">Create</button>
+      <button type="submit" *ngIf="actionMode === CREATE_MODE" (click)="createCustomerDomain()" [disabled]="!customerDomainForm.form.valid"
+              class="btn btn-primary mb-2" style="margin-right: 5px">Create</button>
+      <button type="submit" *ngIf="actionMode === EDIT_MODE" (click)="editCustomerDomain()" [disabled]="!customerDomainForm.form.valid"
+              class="btn btn-primary mb-2" style="margin-right: 5px">Edit</button>
       <button type="submit" class="btn btn-secondary mb-2" (click)="cancelEvent()">Cancel</button>
     </div>
   </div>
