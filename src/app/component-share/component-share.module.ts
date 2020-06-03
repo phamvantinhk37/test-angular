@@ -5,13 +5,21 @@ import {AgGridModule} from 'ag-grid-angular';
 import {UiComponent} from '../share/ui/ui.component';
 import {HeaderComponent} from '../share/header/header.component';
 import {SidebarComponent} from '../share/sidebar/sidebar.component';
+import { StepperComponent } from './stepper/stepper.component';
+import {MatFormFieldModule, MatInputModule, MatStepperModule} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
-  declarations: [AgGridComponent],
+  declarations: [AgGridComponent, StepperComponent, TestComponent],
   imports: [
     CommonModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    MatStepperModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
-  exports: [AgGridComponent]
+  exports: [AgGridComponent, StepperComponent],
 })
 export class ComponentShareModule { }

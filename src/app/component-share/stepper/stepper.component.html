@@ -1,0 +1,8 @@
+<mat-horizontal-stepper [linear]="configStepper.isLinear" labelPosition="{{configStepper.labelPosition}}">
+  <mat-step *ngFor="let step of configStepper.steps"
+            [editable]="configStepper.isEditable"
+            [optional]="step.option">
+    <ng-template matStepLabel>{{step.title}}</ng-template>
+    <div [innerHTML]="step.content"></div>
+  </mat-step>
+</mat-horizontal-stepper>
