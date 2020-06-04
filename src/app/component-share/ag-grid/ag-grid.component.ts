@@ -12,18 +12,10 @@ export class AgGridComponent implements OnInit {
   @Input() columnDefs: Array<object>;
   @Input() rowData: Array<object>;
   dataTmp =  new Array<object>();
+  @Input() config: any;
   constructor() {
   }
-  ngOnInit() {
-  //   var defaultGridOptions = {
-  //
-  //   }
-  //   this.gridOptions = extends(defaultGridOptions, gridOptions)
-  }
-  // onCellClicked(event) {
-  //   this.selectedList.emit(event.data);
-  //   console.log(event);
-  // }
+  ngOnInit() {}
   onRowSelected(event) {
     if (event.node.isSelected()) {
       this.dataTmp.push(event.node);
@@ -33,6 +25,10 @@ export class AgGridComponent implements OnInit {
       });
     }
     this.selectedList.emit(this.dataTmp);
+  }
+  onFilterTextBoxChanged() {
+    // @ts-ignore
+    this.gridOptions.api.setQuickFilter(document.getElementById('ag-grid-search').value);
   }
   onGridReady(event) {
     event.api.sizeColumnsToFit();

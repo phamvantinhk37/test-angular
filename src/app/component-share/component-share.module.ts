@@ -9,9 +9,10 @@ import { StepperComponent } from './stepper/stepper.component';
 import {MatFormFieldModule, MatInputModule, MatStepperModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TestComponent } from './test/test.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
-  declarations: [AgGridComponent, StepperComponent, TestComponent],
+  declarations: [AgGridComponent, DialogComponent],
   imports: [
     CommonModule,
     AgGridModule.withComponents([]),
@@ -21,6 +22,6 @@ import { TestComponent } from './test/test.component';
     MatInputModule,
     FormsModule
   ],
-  exports: [AgGridComponent, StepperComponent],
+  exports: [AgGridComponent],
 })
 export class ComponentShareModule { }

@@ -1,13 +1,20 @@
-<ag-grid-angular style="width: 100%; height: 100%"
-                 class="ag-theme-balham"
-                 [gridOptions]="gridOptions"
-                 [columnDefs]="columnDefs"
-                 [rowData]="rowData"
+<div class="card">
+  <div class="card-body">
+  <div class="form-group">
+    <input type="text" id="ag-grid-search" placeholder="search..." class="form-control" (keyup)="onFilterTextBoxChanged()">
+  </div>
+  <ag-grid-angular style="width: 100%; height: 100%"
+                   class="ag-theme-balham"
+                   [gridOptions]="gridOptions"
+                   [columnDefs]="columnDefs"
+                   [rowData]="rowData"
 
-                 animateRows
-                 pagination
-                 rowSelection="multiple"
-                 (gridReady)="onGridReady($event)"
-                 (rowSelected)="onRowSelected($event)">
+                   animateRows
+                   pagination
+                   rowSelection="multiple"
+                   (gridReady)="onGridReady($event)"
+                   (rowSelected)="onRowSelected($event)">
 
-</ag-grid-angular>
+  </ag-grid-angular>
+  </div>
+</div>
