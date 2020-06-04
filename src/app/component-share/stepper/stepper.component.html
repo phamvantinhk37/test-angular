@@ -1,8 +1,17 @@
-<mat-horizontal-stepper [linear]="configStepper.isLinear" labelPosition="{{configStepper.labelPosition}}">
-  <mat-step *ngFor="let step of configStepper.steps"
-            [editable]="configStepper.isEditable"
-            [optional]="step.option">
-    <ng-template matStepLabel>{{step.title}}</ng-template>
-    <div [innerHTML]="step.content"></div>
-  </mat-step>
-</mat-horizontal-stepper>
+<div id="s-stepper-id">
+  <div class="s-stepper-container">
+    <div class="s-stepper-header" (click)="changeStep(step.id)"
+         *ngFor="let step of configStepper.steps let i=index let last=last">
+      <div class="s-step" [ngClass]="{'s-last-step' : last}">
+        <div class="s-step-number s-focus-number" [ngClass]="{'s-focus-number': step.selected}">{{i+1}}</div>
+        <div class="s-step-label s-focus-label" [ngClass]="{'s-focus-label': step.selected}">{{step.label}}</div>
+      </div>
+      <div class="s-line" [hidden]="last">
+        <hr>
+      </div>
+    </div>
+  </div>
+  <div class="bs-stepper-content">
+    123456
+  </div>
+</div>

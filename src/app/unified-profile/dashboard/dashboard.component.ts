@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {StepperModel} from '../../component-share/stepper/stepper.config';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,20 +8,22 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  configStepper: object;
-  constructor() { }
+  configStepper: StepperModel;
+
+  constructor() {
+  }
 
   ngOnInit() {
     this.configStepper = {
-      isLinear: true,
-      isEditable: true,
-      labelPosition: 'end',
+      option: {
+        linear: false,
+        animation: true
+      },
       steps: [
-        {id: 'step-1-id', title: 'Step 1', content: 'step 1'},
-        {id: 'step-2-id', title: 'step 2', option: false, content: `<h1>step 2</h1>`},
-        {id: 'step-3-id', title: 'step 3',  content: 'step 3'},
+        {id: 'step-1', numberOfStep: '1', label: 'step 1'},
+        {id: 'step-2', numberOfStep: '2', label: 'step 2'},
+        {id: 'step-3', numberOfStep: '3', label: 'step 3'}
       ]
     };
   }
-
 }

@@ -1,7 +1,7 @@
 import {Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import Stepper from 'bs-stepper';
+import {StepperModel} from './stepper.config';
 import * as _ from 'lodash';
-import {TestComponent} from '../test/test.component';
 
 @Component({
   selector: 'app-stepper',
@@ -9,22 +9,21 @@ import {TestComponent} from '../test/test.component';
   styleUrls: ['./stepper.component.css']
 })
 export class StepperComponent implements OnInit {
-
-  constructor(private formBuilder: FormBuilder) {}
-  @Input() configStepper: object;
-  defaultConfig = {
-    isLinear: true,
-    isEditable: true,
-    labelPosition: 'end',
-    steps: [
-      {id: 'step-1-id', title: 'step 1'},
-      {id: 'step-1-id', title: 'step 2'}
-    ]
-  };
-
+  @Input() configStepper: StepperModel;
+  option: StepperModel;
+  constructor() {}
   ngOnInit() {
-    this.configStepper = Object.assign(this.defaultConfig, this.configStepper);
+    this.focusSelectedStep(0);
   }
-
-
+  focusSelectedStep(stepIndex) {
+    _.forEach(this.configStepper.steps, (value, index) => {
+      value.selected = (index === stepIndex);
+    });
+  }
+  changeStep(id) {
+    const index = _.findIndex(this.configStepper.steps, (object) => {
+      return object.id === id;
+    });
+    this.focusSelectedStep(index);
+  }
 }

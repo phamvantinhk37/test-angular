@@ -1,0 +1,60 @@
+.s-stepper-container {
+  display: flex;
+}
+#s-stepper-id .s-stepper-header {
+  display: flex;
+  flex: 1;
+}
+#s-stepper-id .s-stepper-header .s-step {
+  display: flex;
+  flex: 1;
+  justify-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+#s-stepper-id .s-stepper-header .s-last-step {
+  flex: 0.5;
+}
+#s-stepper-id .s-step:hover {
+  text-decoration: none;
+  background-color: rgba(0,0,0,.06);
+  cursor: pointer;
+  border-radius: 5px;
+}
+#s-stepper-id .s-focus-label {
+  color: #1b68a8 !important;
+}
+#s-stepper-id .s-focus-number {
+  color: white !important;
+  background-color: #1b68a8 !important;
+}
+#s-stepper-id .s-step-number {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6c757d;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+  margin-right: 8px;
+}
+#s-stepper-id .s-step-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6c757d;
+  font-weight: bold;
+}
+#s-stepper-id .s-line {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+#s-stepper-id .s-line hr{
+  width: 100%;
+  border: solid 0.3px #6c757d;
+}
+

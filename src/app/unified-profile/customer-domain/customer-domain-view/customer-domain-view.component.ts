@@ -6,7 +6,7 @@ import {ApiService} from '../../../api.service';
   templateUrl: './customer-domain-view.component.html',
   styleUrls: ['./customer-domain-view.component.css']
 })
-export class CustomerDomainViewComponent implements OnInit, OnChanges {
+export class CustomerDomainViewComponent implements OnInit {
   @Output() selectedList = new EventEmitter<Array<object>>();
   @Output() alertObject = new EventEmitter<object>();
   @Input() data: Array<object>;

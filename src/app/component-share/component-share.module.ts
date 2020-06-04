@@ -7,7 +7,7 @@ import {HeaderComponent} from '../share/header/header.component';
 import {SidebarComponent} from '../share/sidebar/sidebar.component';
 import { StepperComponent } from './stepper/stepper.component';
 import {MatFormFieldModule, MatInputModule, MatStepperModule} from '@angular/material';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TestComponent } from './test/test.component';
 
 @NgModule({
@@ -18,7 +18,8 @@ import { TestComponent } from './test/test.component';
     MatStepperModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule
   ],
   exports: [AgGridComponent, StepperComponent],
 })
